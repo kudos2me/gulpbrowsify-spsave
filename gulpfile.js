@@ -10,6 +10,7 @@ var concat = require('gulp-concat'); // Join all JS files together to save space
 var stripDebug = require('gulp-strip-debug'); // Remove debugging stuffs
 var uglify = require('gulp-uglify'); // Minify JavaScript
 var imagemin = require('gulp-imagemin'); // Minify images
+var rename = require('gulp-rename'); // rename to .min.
 //let babel = require('gulp-babel');
 
 // Other dependencies
@@ -30,7 +31,10 @@ gulp.task('styles', function() {
 		//.pipe(gulp.dest('.'))
 		.pipe(minifyCSS())
 		.pipe(concat('styles.css'))
-		.pipe(gulp.dest('./css'))
+		.pipe(rename({
+            suffix: '.min'
+        }))
+		.pipe(gulp.dest('./dist/css'))
 		.pipe(
 			browserSync.reload({
 				stream: true
@@ -52,19 +56,22 @@ gulp.task('scripts', function() {
 			gutil.log(gutil.colors.red('[Error]'), err.toString());
 		})
 		.pipe(concat('bundle.js'))
-		.pipe(gulp.dest('./js/dist/'));
+		.pipe(rename({
+            suffix: '.min'
+        }))
+		.pipe(gulp.dest('./dist/js/'));
 });
 
 // Task to minify images into build
 gulp.task('images', function() {
 	gulp
-		.src('./img/*')
+		.src('./dist/img/*')
 		.pipe(
 			imagemin({
 				progressive: true
 			})
 		)
-		.pipe(gulp.dest('./img/'));
+		.pipe(gulp.dest('./dist/img/'));
 });
 
 // Task to get the size of the app project
