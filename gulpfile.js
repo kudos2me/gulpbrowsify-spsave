@@ -140,8 +140,8 @@ var creds = {
 };
 
 gulp.task('spdefault', function(){
-	//return gulp.src(["dist/**/*.*"])
-	return gulp.src(["dist/css/*.css"])	
+	return gulp.src(["dist/**/*.*"])
+	//return gulp.src(["dist/css/*.css"])	
 		.pipe(spsave(coreOptions, creds));
 });
 
