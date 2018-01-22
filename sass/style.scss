@@ -1,11 +1,29 @@
+/* only css should be updated */
 @import 'another';
 
-body {
-    background-color: white;
+html:not(.ms-dialog) body:not(.ms-dialogBody), 
+html:not(.ms-dialog) body:not(.ms-dialogBody):not(.sp-ootb-base-page)  {
+  #s4-workspace {
+    background-color:lime;
+  }
+}
 
-    
+body {
+  
+}
+
+#js-beezy-start {
+  .header-tabs {
+    background:blue;
+  }
+}
+
+body {
+    #banner-container {
+      background:aqua; 
+    }
+
     h1 {
       color:green;
-      
     }
   }

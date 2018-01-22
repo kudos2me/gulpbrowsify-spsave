@@ -21,6 +21,10 @@ var browserSync = require('browser-sync').create(); // Reload the browser on fil
 // var stylish = require("jshint-stylish"); // More stylish debugging
 var gutil = require('gulp-util');
 
+// SPSave 
+var spsave = require('gulp-spsave');  // upload to sharepoint
+
+
 // Tasks -------------------------------------------------------------------- >
 
 // Task to compile Sass file into CSS, and minify CSS into build directory
@@ -114,6 +118,32 @@ gulp.task('default', ['serve', 'styles', 'scripts'], function() {
     //gulp.watch('**/*.html', browserSync.reload);
 	gulp.watch("**/*.html").on('change', browserSync.reload);
 });
-
 // Taken from https://gist.github.com/danielbarbarito/77d76333c2adc2af65cc6798e883f17c
 // Forked from https://gist.github.com/danielgynn/50d9546e9163c11e799c
+
+
+// Push dist/minified files to SharePoint using SPSave
+// Credentials and SP-save actions 
+var coreOptions = {  
+    siteUrl: "https://corehero.sharepoint.com/sites/isha",
+    notification: true,
+    // path to document library or in this case the master pages gallery
+    folder: "/Style Library/CORE-BZ", 
+    flatten: false, 
+    checkin: true,
+    checkinType: 1,
+    checkinMessage: "Published using Gulp"
+};
+var creds = {  
+    username: "isha@corehero.onmicrosoft.com",
+    password: "Pass@word1"
+};
+
+gulp.task('spdefault', function(){
+	//return gulp.src(["dist/**/*.*"])
+	return gulp.src(["dist/css/*.css"])	
+		.pipe(spsave(coreOptions, creds));
+});
+
+
+

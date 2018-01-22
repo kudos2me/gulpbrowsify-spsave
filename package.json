@@ -11,6 +11,7 @@
     "gulp-minify-html": "^1.0.6",
     "gulp-sass": "^3.1.0",
     "gulp-size": "^3.0.0",
+    "gulp-spsave": "^3.1.0",
     "gulp-strip-debug": "^2.0.0",
     "gulp-uglify": "^3.0.0",
     "jshint-stylish": "^2.2.1"
