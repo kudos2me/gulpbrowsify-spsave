@@ -125,7 +125,7 @@ gulp.task('default', ['serve', 'styles', 'scripts'], function() {
 // Push dist/minified files to SharePoint using SPSave
 // Credentials and SP-save actions 
 var coreOptions = {  
-    siteUrl: "https://corehero.sharepoint.com/sites/isha",
+    siteUrl: "https://prefix.sharepoint.com/sites/sitecol",
     notification: true,
     // path to document library or in this case the master pages gallery
     folder: "/Style Library/CORE-BZ", 
@@ -135,8 +135,8 @@ var coreOptions = {
     checkinMessage: "Published using Gulp"
 };
 var creds = {  
-    username: "isha@corehero.onmicrosoft.com",
-    password: "Pass@word1"
+    username: "username",
+    password: "password"
 };
 
 gulp.task('spdefault', function(){
